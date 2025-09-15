@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet" />
+    <link rel="shortcut icon" href="assets/logo.png" type="image/png" />
+    <title>Aquele Hambúrguer</title>
+</head>
+
+<body>
+    <header class="header" id="header">
+        <section>
+            <nav class="nav-header">
+                <img class="logo" src="assets/logo.png" alt="logo" />
+                <a href="#home">PRINCIPAL</a>
+                <a href="#cardapio">CARDÁPIO</a>
+                <a href="#suporte">CONTATO</a>
+                <img class="carrinho" src="https://img.icons8.com/glyph-neue/64/FFFFFF/shopping-cart.png"
+                    data-light="https://img.icons8.com/glyph-neue/64/FFFFFF/shopping-cart.png"
+                    data-dark="https://img.icons8.com/glyph-neue/64/1A1A1A/shopping-cart.png" alt="shopping-cart">
+            </nav>
+        </section>
+    </header>
+    <div class="home-container">
+        <section class="home" id="home">
+            <div class="content">
+                <h3>O clássico<span>reinventado</span></h3>
+                <p>Lorem ipsum dolor sit, amet consectetur, <span class="separacao">adipisicing elit.<span class="cor">
+                            Nobis, sequi!</span></span></p>
+                <button>PEGUE O SEU AGORA!</button>
+            </div>
+        </section>
+    </div>
+    <section class="cardapio" id="cardapio">
+        <h2 class="title">NOSSO <span>CARDÁPIO</span></h2>
+        <div class="box-container">
+            <div class="box"
+                data-ingredients="Pão brioche, carne smash 70g, mussarela derretida, tomate, alface americana, barbecue, maionese especial.">
+                <h3>Smash BBQ</h3>
+                <img src="assets/img1.png" alt="hamburguer" class="burguer">
+                <div class="price">R$22,00 <span>R$26,99</span></div>
+            </div>
+            <div class="box"
+                data-ingredients="Pão brioche selado na manteiga, 2 carnes (280g), cheddar, mussarela, bacon crocante, barbecue, maionese especial.">
+                <h3>Double Mix Bacon</h3>
+                <img src="assets/img2.png" alt="hamburguer" class="burguer">
+                <div class="price">R$32,00 <span>R$38,99</span></div>
+            </div>
+            <div class="box"
+                data-ingredients="Pão brioche selado na manteiga, carne 140g, cheddar cremoso, bacon crocante, cebola caramelizada, barbecue, maionese especial.">
+                <h3>Onion Bacon</h3>
+                <img src="assets/img3.png" alt="hamburguer" class="burguer">
+                <div class="price">R$28,00</div>
+            </div>
+            <div class="box"
+                data-ingredients="Pão brioche selado na manteiga, carne 140g, mussarela derretida, bacon crocante, rúcula, tomate seco, barbecue, maionese especial.">
+                <h3>Italian Bacon</h3>
+                <img src="assets/img4.png" alt="hamburguer" class="burguer">
+                <div class="price">R$22,00 <span>R$26,99</span></div>
+            </div>
+            <div class="box"
+                data-ingredients="Pão brioche selado na manteiga, 3 carnes smash (210g), cheddar cremoso, bacon crocante, barbecue, maionese especial.">
+                <h3>Triple Smash Bacon</h3>
+                <img src="assets/img5.png" alt="hamburguer" class="burguer">
+                <div class="price">R$34,00 <span>R$36,99</span></div>
+            </div>
+            <div class="box"
+                data-ingredients="Pão brioche selado na manteiga, 2 carnes smash (140g), cheddar cremoso, bacon crocante, barbecue, maionese especial.">
+                <h3>Double Smash Bacon</h3>
+                <img src="assets/img6.png" alt="hamburguer" class="burguer">
+                <div class="price">R$30,00</div>
+            </div>
+        </div>
+        <div class="navigation-auto">
+            <div class="auto-btn1"></div>
+            <div class="auto-btn2"></div>
+            <div class="auto-btn3"></div>
+        </div>
+        <div class="manual-navigation">
+            <label for="radio1" class="manual-btn"></label>
+            <label for="radio2" class="manual-btn"></label>
+            <label for="radio3" class="manual-btn"></label>
+        </div> 
+    </section>
+    <section>
+        <br>
+    </section>
+    <script src="assets/scripts/index.js" defer></script>
+</body>
+
+</html>
