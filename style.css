@@ -1,0 +1,299 @@
+:root {
+  --font: #f1f1f1;
+  --bg: #0f0f0f;
+  --main-color: #f3bc33;
+  --border: 0.1rem solid rgba(255, 200, 0, 0.2);
+  font-size: 1rem;
+}
+
+* {
+  text-decoration: none;
+  transition: 0.2s ease;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  font-family: "Oswald", sans-serif;
+}
+
+body {
+  background-color: var(--bg);
+}
+
+/* Seção home */
+
+.header {
+  margin: 0 auto;
+  max-width: 1200px;
+  transition: background-color 250ms ease, box-shadow 250ms ease, backdrop-filter 250ms ease;
+}
+
+.header.rolar section {
+  background-color: #fff;
+}
+
+.header.rolar .nav-header a {
+  color: var(--bg);
+}
+
+.header section {
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  z-index: 99;
+  border-bottom: var(--border);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.header .nav-header {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  gap: 2rem;
+  max-width: 1200px;
+}
+
+.header .nav-header .logo {
+  padding: 0.5rem 5rem 0.5rem 0;
+  width: 4rem;
+  height: 4rem;
+}
+
+.header .nav-header a {
+  color: var(--font);
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.header .nav-header .carrinho {
+  margin-left: auto;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.header .nav-header a:hover {
+  color: var(--main-color);
+  border-bottom: 0.1rem solid var(--main-color);
+}
+
+.header .nav-header .carrinho:hover {
+  transform: scale(1.1);
+  filter: brightness(0.8);
+}
+
+.home-container {
+  background-image: url("assets/hamburguer.jpg");
+  min-width: 20rem;
+  background-size: cover;
+  background-position: center;
+}
+
+.home-container section {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  min-height: 100vh;
+  max-width: 1200px;
+}
+
+.content {
+  max-width: 1200px;
+}
+
+.content h3 {
+  font-size: 3rem;
+  color: var(--font);
+  margin: 0 0 2rem 0;
+  text-transform: uppercase;
+}
+
+.content h3 span {
+  margin-top: -1rem;
+  color: var(--main-color);
+  font-size: 5rem;
+  display: block;
+  margin-bottom: -2rem;
+}
+
+.content p {
+  font-size: 1.5rem;
+  color: var(--font);
+  margin: 0 0 2rem 0;
+  font-weight: 300;
+  line-height: 1.5px;
+}
+
+.content .cor {
+  color: var(--main-color);
+}
+
+.content .separacao {
+  display: block;
+  margin: 2rem 0 0 0;
+}
+
+.content button {
+  margin: 0 0;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  color: var(--bg);
+  background-color: var(--main-color);
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.content button:hover {
+  background-color: var(--font);
+  color: var(--bg);
+  transform: scale(1.05);
+  letter-spacing: 0.1rem;
+}
+
+/* Seção cardápio */
+
+.cardapio {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.cardapio .title {
+  color: var(--font);
+  font-size: 3rem;
+  text-align: center;
+  padding: 1.4rem 0;
+}
+
+.cardapio .title span {
+  color: var(--main-color);
+}
+
+.cardapio h3 {
+  color: var(--font);
+  font-size: 2rem;
+}
+
+.cardapio p {
+  color: var(--font);
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.cardapio .box-container {
+  display: grid;
+  margin: 3rem 0;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.cardapio .box-container .box {
+  text-align: center;
+  border: var(--border);
+  padding: 1rem;
+  border-radius: 6px;
+  box-shadow: 2px 2px 0 0  rgb(255, 159, 15);
+}
+
+.cardapio .box-container .box img {
+  height: 15rem;
+}
+
+.cardapio .box-container .box {
+  position: relative; 
+  overflow: visible;
+}
+
+.cardapio .box::after {
+  content: attr(data-ingredients);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  bottom: 100%;
+  background: rgba(0,0,0,0.88);
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 1rem;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .14s ease, transform .14s ease;
+  z-index: 50;
+  width: 15rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+}
+
+.cardapio .box:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-8px);
+}
+
+.cardapio .box-container .box .price {
+  color: var(--font);
+  font-size: 2rem;
+}
+
+.cardapio .box-container .box .price span {
+  color: rgba(187, 187, 187, 0.5);
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-decoration: line-through;
+}
+
+.cardapio .box-container .box:hover {
+  background: #fff;
+  transform: scale(1.1);
+  box-shadow: none;
+}
+
+.cardapio .box-container .box:hover >* {
+  color: black;
+  font-weight: bold;
+}
+
+.cardapio .box-container .box:hover span {
+  color: var(--main-color);
+  font-weight: 300;
+}
+
+.cardapio .controls {
+  inset: 0;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 60;
+}
+
+.cardapio .controls .button {
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  position: absolute;
+  border: 2px solid rgb(255, 159, 15); 
+  border-radius: 50%;
+  transition: 0.5s ease;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardapio .controls .button:hover {
+  background-color: rgb(255, 159, 15);
+  cursor: pointer;
+}
+
+.cardapio .controls #right {
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.cardapio .controls #left {
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  margin-right: 14rem;
+}

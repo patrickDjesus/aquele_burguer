@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Slider 6 em 6</title>
+<style>
+  .slider { width:100%; max-width:1200px; margin:20px auto; position:relative; }
+  .viewport { overflow:hidden; width:100%; }
+  .track { display:flex; transition:transform .45s ease; will-change:transform; }
+  .item {
+    box-sizing:border-box;
+    padding:12px;
+  }
+  .card {
+    background:#f5f5f5; border-radius:8px; padding:20px; text-align:center;
+    height:100px; display:flex; align-items:center; justify-content:center;
+    border:1px solid #ddd;
+  }
+  .controls { position:absolute; top:50%; transform:translateY(-50%); width:100%; pointer-events:none;}
+  .btn {
+    pointer-events:auto; background:#111; color:#fff; border:none; padding:8px 12px;
+    border-radius:6px; cursor:pointer; opacity:.9;
+  }
+  .btn:disabled { opacity:.45; cursor:not-allowed; }
+  .prev { position:absolute; left:8px; }
+  .next { position:absolute; right:8px; }
+
+  /* Responsividade: muda número de itens por página */
+  @media (max-width:1000px){ /* ex: tablet */
+    /* vamos usar JS para recalcular, mas só para demonstração */
+  }
+  @media (max-width:600px){ /* ex: celular */
+  }
+</style>
+</head>
+<body>
+
+<div class="slider" id="mySlider" aria-label="Slider de caixas">
+  <div class="viewport">
+    <div class="track">
+      <!-- Gere quantos boxes quiser aqui -->
+      <!-- Exemplo com 14 boxes -->
+      <div class="item"><div class="card">1</div></div>
+      <div class="item"><div class="card">2</div></div>
+      <div class="item"><div class="card">3</div></div>
+      <div class="item"><div class="card">4</div></div>
+      <div class="item"><div class="card">5</div></div>
+      <div class="item"><div class="card">6</div></div>
+      <div class="item"><div class="card">7</div></div>
+      <div class="item"><div class="card">8</div></div>
+      <div class="item"><div class="card">9</div></div>
+      <div class="item"><div class="card">10</div></div>
+      <div class="item"><div class="card">11</div></div>
+      <div class="item"><div class="card">12</div></div>
+      <div class="item"><div class="card">13</div></div>
+      <div class="item"><div class="card">14</div></div>
+    </div>
+  </div>
+
+  <div class="controls" aria-hidden="false">
+    <button class="btn prev" id="prevBtn" aria-label="Anterior">◀</button>
+    <button class="btn next" id="nextBtn" aria-label="Próximo">▶</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  const slider = document.getElementById('mySlider');
+  const viewport = slider.querySelector('.viewport');
+  const track = slider.querySelector('.track');
+  const items = Array.from(track.children);
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+
+  // Quantos itens por página (pode ajustar/responsivo)
+  let itemsPerPage = 6;
+  let currentPage = 0;
+  let totalPages = 1;
+
+  function calcLayout(){
+    // Responsividade simples (ajuste conforme quiser)
+    const w = window.innerWidth;
+    if (w < 480) itemsPerPage = 1;
+    else if (w < 768) itemsPerPage = 2;
+    else if (w < 1000) itemsPerPage = 3;
+    else itemsPerPage = 6;
+
+    // seta largura de cada item em porcentagem
+    items.forEach(it => it.style.flex = `0 0 ${100 / itemsPerPage}%`);
+
+    totalPages = Math.ceil(items.length / itemsPerPage);
+    // garante que currentPage não passe do máximo
+    currentPage = Math.min(currentPage, Math.max(0, totalPages - 1));
+    moveTo(currentPage);
+    updateButtons();
+  }
+
+  function moveTo(page){
+    // translate em porcentagem: cada página = 100% do viewport
+    track.style.transform = `translateX(-${page * 100}%)`;
+  }
+
+  function updateButtons(){
+    prevBtn.disabled = currentPage <= 0;
+    nextBtn.disabled = currentPage >= totalPages - 1;
+  }
+
+  prevBtn.addEventListener('click', () => {
+    currentPage = Math.max(0, currentPage - 1);
+    moveTo(currentPage);
+    updateButtons();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentPage = Math.min(totalPages - 1, currentPage + 1);
+    moveTo(currentPage);
+    updateButtons();
+  });
+
+  // keyboard support
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') prevBtn.click();
+    if (e.key === 'ArrowRight') nextBtn.click();
+  });
+
+  window.addEventListener('resize', calcLayout);
+
+  // inicializa
+  calcLayout();
+})();
+</script>
+</body>
+</html>
