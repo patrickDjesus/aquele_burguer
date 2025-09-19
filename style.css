@@ -73,7 +73,9 @@ body {
 
 .header .nav-header a:hover {
   color: var(--main-color);
+  font-size: 1.5rem;
   border-bottom: 0.1rem solid var(--main-color);
+
 }
 
 .header .nav-header .carrinho:hover {
@@ -162,7 +164,7 @@ body {
   color: var(--font);
   font-size: 3rem;
   text-align: center;
-  padding: 1.4rem 0;
+  padding-top: 1rem;
 }
 
 .cardapio .title span {
@@ -259,11 +261,14 @@ body {
 }
 
 .cardapio .controls {
-  inset: 0;
   position: absolute;
+  top: 58%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%; 
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   pointer-events: none;
   z-index: 60;
 }
@@ -278,6 +283,7 @@ body {
   transition: 0.5s ease;
   align-items: center;
   justify-content: center;
+  pointer-events: all;
 }
 
 .cardapio .controls .button:hover {
@@ -295,5 +301,41 @@ body {
   top: 50%;
   left: 0;
   transform: translateY(-50%);
-  margin-right: 14rem;
+}
+
+
+.cardapio .box-container .box {
+  text-align: center;
+  border: var(--border);
+  padding: 1rem;
+  border-radius: 6px;
+  box-shadow: 2px 2px 0 0  rgb(255, 159, 15);
+  height: 350px; /* altura fixa, ajusta conforme necessidade */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cardapio .box-container .box img {
+  height: 15rem;
+  width: 100%;
+  object-fit: cover;
+}
+
+.box {
+  position: relative;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* classe que será adicionada para “sumir” a página */
+.page-out {
+  opacity: 0;
+  transform: translateX(-50px);
+  pointer-events: none;
+}
+
+/* classe para a nova página entrar */
+.page-in {
+  opacity: 1;
+  transform: translateX(0);
 }
